@@ -43,5 +43,10 @@ EXECUTE AS LOGIN = 'UsuarioSoloLectura';
 EXEC procedimiento_insert_administrador; --si podra ejecutarlo porque tiene permiso de ejecucion
 REVERT; 
 
+-- Revocar permiso de ejecución del procedimiento almacenado
+REVOKE EXECUTE ON dbo.procedimiento_insert_administrador FROM UsuarioSoloLectura; 
 
-
+--insercion con procedimiento
+EXECUTE AS LOGIN = 'UsuarioSoloLectura'; 
+EXEC procedimiento_insert_administrador; --ya no podra ejecutarlo porque le quitamos el permiso
+REVERT; 
