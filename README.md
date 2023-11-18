@@ -11,6 +11,6 @@ Grupo 7 Comision 2
 ## Autores ✒️
 
 * **Lovato Matias Sebastian** - *Manejo de permiso a nivel de usuario* - [ShadeTheWitcher](https://github.com/ShadeTheWitcher)
-* **Marin Matias Exquiel** - *Manejo de permiso a nivel de usuario * - []()
+* **Marin Matias Exquiel** - *Manejo de permiso a nivel de usuario * - [Matias Marin]()
 * **Gauna Octavio** - *Manejo de permiso a nivel de usuario* - [Gauna Octavio]()
-* **Gimenez Maximiliano** - *Manejo de permiso a nivel de usuario* - [Gauna Octavio]()
+* **Gimenez Maximiliano** - *Manejo de permiso a nivel de usuario* - [Gimenez Maximiliano]()
