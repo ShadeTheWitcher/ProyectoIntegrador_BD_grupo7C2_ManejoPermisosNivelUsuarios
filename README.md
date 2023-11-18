@@ -1,5 +1,5 @@
-# Proyecto de estudio Bases de Datos I: Procedimientos y funciones almacenadas
-Grupo 8 Comision 2
+# Proyecto Integrador Bases de Datos I: Manejo de Permisos a Nivel de Usuario
+Grupo 7 Comision 2
 
   <p align="left">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
@@ -10,6 +10,7 @@ Grupo 8 Comision 2
 
 ## Autores ✒️
 
-* **Andrada Soraire Francisco Sebastián** - *Trabajo Inicial* - [Devastiand](https://github.com/Devastiand)
-* **Ayala Adrian de Jesus** - *Trabajo Inicial* - [yisusokk](https://github.com/yisusokk)
-* **Resoagli, Gaston Alejandro** - *Trabajo Inicial* - [GastonResoagli](https://github.com/GastonResoagli)
+* **Lovato Matias Sebastian** - *Manejo de permiso a nivel de usuario* - [ShadeTheWitcher](https://github.com/ShadeTheWitcher)
+* **Marin Matias Exquiel** - *Manejo de permiso a nivel de usuario * - []()
+* **Gauna Octavio** - *Manejo de permiso a nivel de usuario* - [Gauna Octavio]()
+* **Gimenez Maximiliano** - *Manejo de permiso a nivel de usuario* - [Gauna Octavio]()
