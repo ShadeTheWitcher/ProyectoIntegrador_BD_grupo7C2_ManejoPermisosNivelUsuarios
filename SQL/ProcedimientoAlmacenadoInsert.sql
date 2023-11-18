@@ -4,7 +4,7 @@ GO
 CREATE PROCEDURE procedimiento_insert_administrador
 AS
 BEGIN
-    -- Aqu� va la l�gica del procedimiento
+    -- insersion de varios
 	Insert into administrador(apeynom,viveahi,tel,sexo,fechnac) values ('GONZ�LEZ JUAN', 'S', '3624235689', 'M', '19801015');
 	Insert into administrador(apeynom,viveahi,tel,sexo,fechnac) values ('RODR�GUEZ MAR�A', 'N', '3624236689', 'F', '19751203');
 	Insert into administrador(apeynom,viveahi,tel,sexo,fechnac) values ('L�PEZ CARLOS', 'S', '3624237689', 'M', '19790822');
