@@ -1,6 +1,6 @@
 USE base_consorcioPI;
 
--- se necesita tener una instancia MIXTA para realizar esto
+-- Se necesita tener una instancia MIXTA para realizar esto
 -- Crear dos usuarios de servidor SQL Server:
 CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'pwAdmin';
 CREATE LOGIN UsuarioSoloLectura WITH PASSWORD = 'pwSoloLectura';
@@ -15,10 +15,8 @@ CREATE USER UsuarioSoloLectura FOR LOGIN UsuarioSoloLectura;
 --Asignar permisos al usuario de solo lectura:
 ALTER ROLE db_datareader ADD MEMBER UsuarioSoloLectura;
 
---GRANT EXECUTE TO UsuarioSoloLectura;
-
-
---damos acceso al usuario de solo lectura al procedimiento
+--Creado previamente el procedimiento almacenado
+--Damos acceso al usuario de solo lectura al procedimiento
 GRANT EXECUTE ON dbo.InsertarAdministrador TO UsuarioSoloLectura;
 
 
@@ -34,45 +32,57 @@ INSERT INTO administrador (apeynom, viveahi, tel, sexo, fechnac) VALUES ('Admin'
 REVERT;
 
 
-
-
-
---insercion con procedimiento Admin
+--Insercion con procedimiento Admin
 EXECUTE AS LOGIN = 'UsuarioAdmin'; 
 EXEC InsertarAdministrador 'LOPEZ JUAN CARLOS', 'S', 3794222222, 'M', '19920828';
 REVERT; 
-
-
-
 
 --insercion con procedimiento Solo lectura
 EXECUTE AS LOGIN = 'UsuarioSoloLectura'; 
 EXEC InsertarAdministrador 'LOPEZ JUAN CARLOS', 'S', 3794222222, 'M', '19920828'; --si podra ejecutarlo
 REVERT; 
 
-
 -- Revocar permiso de ejecución del procedimiento almacenado
 REVOKE EXECUTE ON dbo.InsertarAdministrador FROM UsuarioSoloLectura; 
 
-
---insercion con procedimiento con el permiso revocado
+--Insercion con procedimiento con el permiso revocado
 EXECUTE AS LOGIN = 'UsuarioSoloLectura'; 
 EXEC InsertarAdministrador 'LOPEZ JUAN CARLOS', 'S', 3794222222, 'M', '19920828'; --ya no podra ejecutarlo porque le quitamos el permiso
 REVERT; 
 
+--Creamos la tabla AUDITORIA para la utilización de TRIGGER
 
+--Creamos TRIGGER para administrador
+
+--Probamos TRIGGER 
+
+	--Insertamos registros con el administrador
+	EXECUTE AS LOGIN = 'UsuarioAdmin'; 
+	EXEC InsertarAdministrador 'LOPEZ JUAN CARLOS', 'S', 3794222222, 'M', '19920828';
+	REVERT; 
+
+	--Visualizamos resultados
+	Select * from auditoria
+
+	--Insertamos registros con el usuario de sólo lectura
+	EXECUTE AS LOGIN = 'UsuarioSoloLectura'; 
+	EXEC InsertarAdministrador 'RONCAGLIA ALFREDO ALEJANDRO', 'S', 3794244222, 'M', '19220828'; --si podra ejecutarlo
+	REVERT; 
+
+	--Visualizamos resultados
+	Select * from auditoria
 
 
 
 --///////////////////   EJEMPLO CON VISTAS  ////////////////////////---
 
---creamos otro usuario para probar
+--Creamos otro usuario para probar
 CREATE LOGIN UsuarioVista WITH PASSWORD = 'pwVista';
 CREATE USER UsuarioVista FOR LOGIN UsuarioVista;
 
 
 
---otrogamos permiso de select en la tabla admin
+--Otrogamos permiso de select en la tabla admin
 GRANT SELECT ON dbo.administrador TO UsuarioVista;
 
 EXECUTE AS LOGIN = 'UsuarioVista'; 
@@ -92,16 +102,17 @@ REVERT;
 
 
 
--- creamos una vista que permitira que solo se visualize las columnas especificadas
+-- Creamos una vista que permitira que solo se visualize las columnas especificadas
 CREATE VIEW dbo.VistaAdministrador AS
 SELECT idadmin, apeynom, tel, sexo, fechnac
 FROM dbo.administrador;
 
---otorgamos permisos SELECT al usuario en la vista creada, permitiéndole consultar datos a través de esta vista.
+--Otorgamos permisos SELECT al usuario en la vista creada, permitiéndole consultar datos a través de esta vista.
 GRANT SELECT ON dbo.VistaAdministrador TO UsuarioVista;
 
---probamos la vista
+--Probamos la vista
 EXECUTE AS LOGIN = 'UsuarioVista'; 
 SELECT * FROM dbo.VistaAdministrador; --aparecera la vista que creamos antes
 REVERT;
+
 

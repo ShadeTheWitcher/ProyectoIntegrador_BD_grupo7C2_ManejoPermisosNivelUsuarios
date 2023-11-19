@@ -9,7 +9,7 @@ CREATE PROCEDURE InsertarAdministrador
 )
 AS
 BEGIN -- "base_consorcio.dbo.administrador" se debe cambiar si se uso otro nombre para la base
-    INSERT INTO base_consorcio.dbo.administrador (apeynom, viveahi, tel, sexo, fechnac)  
+    INSERT INTO base_consorcioPI.dbo.administrador (apeynom, viveahi, tel, sexo, fechnac)  
     VALUES (@apeynom, @viveahi, @tel, @sexo, @fechnac);
 END;
 
