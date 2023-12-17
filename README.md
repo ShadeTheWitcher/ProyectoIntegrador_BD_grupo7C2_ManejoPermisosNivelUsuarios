@@ -1,10 +1,9 @@
 # Proyecto Integrador Bases de Datos I: Manejo de Permisos a Nivel de Usuario
 Grupo 7 Comision 2
 
-  <p align="left">
-   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
-   </p>
-
+<p align="left">
+  <img src="https://img.shields.io/badge/STATUS-FINALIZADO-brightgreen">
+</p>
 
 
 
